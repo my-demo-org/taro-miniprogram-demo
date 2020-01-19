@@ -1,8 +1,9 @@
-import { ComponentClass } from 'react'
-import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { ComponentClass } from "react";
+import Taro, { Component, Config } from "@tarojs/taro";
+import { View, Text, Button } from "@tarojs/components";
+import { INDEX_ITEM_CONFIG } from "./config";
 
-import './index.scss'
+import "./index.scss";
 
 // #region 书写注意
 //
@@ -14,38 +15,51 @@ import './index.scss'
 //
 // #endregion
 
-
-type PageState = {}
+type PageState = {};
 
 type PageOwnProps = {};
 
-
 class Index extends Component {
-
-    /**
+  /**
    * 指定config的类型声明为: Taro.Config
    *
    * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型
    * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
-    config: Config = {
-    navigationBarTitleText: '首页'
+  config: Config = {
+    navigationBarTitleText: "首页"
+  };
+
+  componentWillUnmount() {}
+
+  componentDidShow() {}
+
+  componentDidHide() {}
+
+  onClickItem(url) {
+    Taro.navigateTo({
+      url: url
+    });
   }
 
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
-  render () {
+  render() {
     return (
-      <View className='index'>
-        <View><Text>Hello, World</Text></View>
+      <View className="index">
+        <View
+          className="index__item"
+          onClick={this.onClickItem.bind(this, "/pages/count/count")}
+        >
+          Count
+        </View>
+        <View
+          className="index__item"
+          onClick={this.onClickItem.bind(this, "/pages/drag/drag")}
+        >
+          Drag
+        </View>
       </View>
-    )
+    );
   }
 }
 
@@ -56,4 +70,4 @@ class Index extends Component {
 //
 // #endregion
 
-export default Index as ComponentClass<PageOwnProps, PageState>
+export default Index as ComponentClass<PageOwnProps, PageState>;
