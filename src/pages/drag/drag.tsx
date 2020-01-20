@@ -1,4 +1,4 @@
-import Taro, { Component, ComponentClass } from '@tarojs/taro';
+import Taro, { Component, ComponentClass, Config } from '@tarojs/taro';
 import { View, Text, ScrollView } from '@tarojs/components';
 import { AtActivityIndicator } from 'taro-ui';
 import './drag.scss';
@@ -18,6 +18,10 @@ class ListDrag extends Component {
   constructor(props) {
     super(props);
   }
+
+  config: Config = {
+    navigationBarTitleText: "Drag"
+  };
 
   state = {
     dargStyle: {

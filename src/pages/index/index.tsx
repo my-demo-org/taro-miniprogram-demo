@@ -2,6 +2,7 @@ import { ComponentClass } from "react";
 import Taro, { Component, Config } from "@tarojs/taro";
 import { View, Text, Button } from "@tarojs/components";
 import { INDEX_ITEM_CONFIG } from "./config";
+import { ListItem } from "../../components/list-item/list-item";
 
 import "./index.scss";
 
@@ -44,22 +45,16 @@ class Index extends Component {
   }
 
   render() {
-    return (
-      <View className="index">
-        <View
-          className="index__item"
-          onClick={this.onClickItem.bind(this, "/pages/count/count")}
-        >
-          Count
-        </View>
-        <View
-          className="index__item"
-          onClick={this.onClickItem.bind(this, "/pages/drag/drag")}
-        >
-          Drag
-        </View>
-      </View>
-    );
+    const listItems = INDEX_ITEM_CONFIG;
+    const item = listItems.map(i => {
+      return (
+        <ListItem onClick={this.onClickItem.bind(this, i.url)}>
+          {i.text}
+        </ListItem>
+      );
+    });
+
+    return <View className="index">{item}</View>;
   }
 }
 
