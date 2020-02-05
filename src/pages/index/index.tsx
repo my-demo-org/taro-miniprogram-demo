@@ -2,7 +2,7 @@ import { ComponentClass } from "react";
 import Taro, { Component, Config } from "@tarojs/taro";
 import { View, Text, Button } from "@tarojs/components";
 import { INDEX_ITEM_CONFIG } from "./config";
-import { ListItem } from "../../components/list-item/list-item";
+import ListItem from "../../components/list-item/list-item";
 
 import "./index.scss";
 

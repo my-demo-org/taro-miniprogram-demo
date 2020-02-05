@@ -3,7 +3,6 @@ import { View } from "@tarojs/components";
 import "./list-item.scss";
 
 interface ListItemProps {
-  text?: string;
   onClick?: () => void;
 }
 
